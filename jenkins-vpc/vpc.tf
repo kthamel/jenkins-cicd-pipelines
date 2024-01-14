@@ -17,27 +17,9 @@ resource "aws_subnet" "kthamel-ec2-subnet-0" {
 }
 
 resource "aws_subnet" "kthamel-ec2-subnet-1" {
-  vpc_id            = aws_vpc.kthamel-ec2-vpc.id
-  cidr_block        = "172.16.1.0/24"
-  availability_zone = "us-east-1a"
-  map_public_ip_on_launch = true
-
-  tags = local.common_tags
-}
-
-resource "aws_subnet" "kthamel-ec2-subnet-2" {
   vpc_id                  = aws_vpc.kthamel-ec2-vpc.id
-  cidr_block              = "172.16.2.0/24"
-  availability_zone       = "us-east-1b"
-  map_public_ip_on_launch = true
-
-  tags = local.common_tags
-}
-
-resource "aws_subnet" "kthamel-ec2-subnet-3" {
-  vpc_id            = aws_vpc.kthamel-ec2-vpc.id
-  cidr_block        = "172.16.3.0/24"
-  availability_zone = "us-east-1b"
+  cidr_block              = "172.16.1.0/24"
+  availability_zone       = "us-east-1a"
   map_public_ip_on_launch = true
 
   tags = local.common_tags

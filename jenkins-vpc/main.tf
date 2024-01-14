@@ -18,7 +18,7 @@ resource "aws_key_pair" "ssh_key_pub" {
 
 resource "aws_network_interface" "vault-instance-nic" {
   subnet_id       = aws_subnet.kthamel-ec2-subnet-0.id
-  private_ips     = ["172.32.0.100"]
+  private_ips     = ["172.16.0.100"]
   security_groups = [aws_security_group.public-subnet-assoc.id]
 
   attachment {
@@ -39,9 +39,9 @@ resource "aws_instance" "vault-instance" {
 #!/bin/bash
 ## Install dependencies ##
 sudo yum install git -y
-## Clone the vault configurations ##
+## Clone the jenskins configurations ##
 sudo git clone https://github.com/kthamel/aws-jenkins-configuration.git
-## Setup vault prod server ## 
+## Setup jenkins master server ## 
 sudo bash aws-jenkins-configuration/script.sh
 
 EOF
