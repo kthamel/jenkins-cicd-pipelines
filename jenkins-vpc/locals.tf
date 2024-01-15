@@ -1,6 +1,6 @@
 locals {
-  Name    = "Vault-On-EC2"
-  Project = "DevOps-Vault"
+  Name    = "Jenkins-On-EC2"
+  Project = "DevOps-Jenkins"
 }
 
 locals {
