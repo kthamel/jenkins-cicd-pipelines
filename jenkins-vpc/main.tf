@@ -46,8 +46,10 @@ EOF
 
   provisioner "remote-exec" {
     inline = [
-      "sudo mkdir -p /var/lib/jenkins",
-      "sudo yum install nfs-utils -y -q"
+      "sudo mkdir -p /opt/var/lib/jenkins",
+      "sudo yum install nfs-utils -y -q",
+      "sudo mount -t nfs -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport ${aws_efs_file_system.jenkins-data.dns_name}:/  /var/lib/jenkins",
+      "echo ${aws_efs_file_system.jenkins-data.dns_name}:/ var/lib/jenkins nfs4 defaults,_netdev 0 0  | sudo tee --append /etc/fstab "
     ]
   }
 
@@ -55,6 +57,6 @@ EOF
 }
 
 output "ssh-instance-eip" {
-  description = "Public IP of Vault Instance"
+  description = "Public IP of Jenkins Instance"
   value       = aws_instance.jenkins-instance.public_ip
 }
